@@ -1,0 +1,839 @@
+/* ==========================================================================
+   CSS変数 (カスタムプロパティ) の定義
+   ========================================================================== */
+:root {
+  /* 配色方針 */
+  --bg-primary: #FFFFFF;     /* メイン背景：純白 */
+  --bg-secondary: #F8F9FA;   /* サブ背景：ごく薄い上質なグレー */
+  --text-primary: #111111;   /* メイン文字：深みのある墨色 */
+  --text-secondary: #666666; /* サブ文字：柔らかいグレー */
+  --border-color: #EAEAEA;   /* 境界線・枠線色 */
+  
+  /* タイポグラフィ */
+  --font-base: 'Montserrat', 'Helvetica Neue', 'Noto Sans JP', sans-serif;
+  
+  /* レイアウト・余白 */
+  --container-width: 1140px;
+  --transition-smooth: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+  --transition-fast: all 0.3s ease;
+}
+
+/* ==========================================================================
+   リセットCSS & 基本設定
+   ========================================================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: auto; /* JSのスムーススクロールと競合しないようデフォルトはauto */
+}
+
+body {
+  font-family: var(--font-base);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.8; /* 贅沢な行間を確保 */
+  letter-spacing: 0.05em; /* 文字間隔を広めにとることで洗練さを演出 */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: var(--transition-fast);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+button {
+  background: none;
+  border: none;
+  font: inherit;
+  cursor: pointer;
+  outline: none;
+}
+
+ul {
+  list-style: none;
+}
+
+/* 共通コンテナ */
+.container {
+  width: 100%;
+  max-width: var(--container-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+/* セクションの贅沢な余白 */
+.section-padding {
+  padding-top: 120px;
+  padding-bottom: 120px;
+}
+
+/* セクションヘッダー */
+.section-header {
+  margin-bottom: 70px;
+  max-width: 600px;
+}
+
+.section-subtitle {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: 300; /* 細いフォントウェイトで上品に */
+  letter-spacing: 0.08em;
+  margin-bottom: 20px;
+}
+
+.section-desc {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
+}
+
+/* 必須ラベル */
+.required {
+  font-size: 0.65rem;
+  background-color: var(--text-primary);
+  color: #fff;
+  padding: 2px 6px;
+  margin-left: 8px;
+  vertical-align: middle;
+  letter-spacing: 0;
+}
+
+/* ==========================================================================
+   アニメーション準備 (スクロールフェードイン)
+   ========================================================================== */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1s cubic-bezier(0.25, 1, 0.5, 1), transform 1s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.fade-in.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ==========================================================================
+   1. Header / Navigation
+   ========================================================================== */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  border-bottom: 1px solid transparent;
+  transition: var(--transition-fast);
+  background-color: transparent;
+}
+
+/* スクロール時にJSでクラスを付与し、ヘッダーにガラスのような半透明背景を適用 */
+.header.scrolled {
+  background-color: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.header-container {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: var(--transition-fast);
+}
+
+.header.scrolled .header-container {
+  padding: 16px 24px; /* スクロール時は少し高さを縮める */
+}
+
+.logo {
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+}
+
+.logo-sub {
+  font-weight: 300;
+  color: var(--text-secondary);
+}
+
+/* PCナビゲーション */
+.nav-list {
+  display: flex;
+  gap: 40px;
+}
+
+.nav-link {
+  font-size: 0.85rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: var(--text-secondary);
+  position: relative;
+  padding: 8px 0;
+}
+
+.nav-link:hover {
+  color: var(--text-primary);
+}
+
+/* ホバー時に伸びる洗練された下線アニメーション */
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: var(--text-primary);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.nav-link:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* モバイルハンバーガーボタン */
+.menu-toggle {
+  display: none; /* デフォルト（PC）は非表示 */
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24px;
+  height: 16px;
+  z-index: 110;
+}
+
+.menu-toggle .bar {
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: var(--text-primary);
+  transition: var(--transition-fast);
+}
+
+/* モバイルハンバーガーメニューの引き出し */
+.nav-mobile {
+  position: fixed;
+  top: 0;
+  right: -100%; /* 初期位置は右側に隠す */
+  width: 100%;
+  height: 100vh;
+  background-color: var(--bg-primary);
+  z-index: 95;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-smooth);
+}
+
+.nav-mobile.is-open {
+  right: 0; /* メニューオープン時に画面いっぱいに表示 */
+}
+
+.nav-mobile-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+
+.nav-mobile-link {
+  font-size: 1.5rem;
+  font-weight: 300;
+  letter-spacing: 0.15em;
+  color: var(--text-primary);
+}
+
+/* ==========================================================================
+   2. Hero Section (ファーストビュー)
+   ========================================================================== */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-top: 100px; /* ヘッダーの高さ分のマージン */
+  background-color: var(--bg-primary);
+}
+
+.hero-container {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  align-items: center;
+  gap: 60px;
+  width: 100%;
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.hero-content {
+  z-index: 2;
+}
+
+.hero-title {
+  font-size: 3rem;
+  font-weight: 300;
+  line-height: 1.4;
+  letter-spacing: 0.08em;
+  margin-bottom: 24px;
+}
+
+.hero-subtitle {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  line-height: 2;
+  margin-bottom: 48px;
+  max-width: 500px;
+}
+
+/* スクロールへの誘導表示 */
+.hero-scroll {
+  display: inline-block;
+}
+
+.scroll-indicator {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.scroll-text {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+}
+
+.scroll-line {
+  display: inline-block;
+  width: 60px;
+  height: 1px;
+  background-color: var(--text-primary);
+  position: relative;
+  overflow: hidden;
+}
+
+/* 線が左から右に滑るようにアニメーションする演出 */
+.scroll-line::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--text-secondary);
+  transform: translateX(-100%);
+  animation: lineSlide 2.5s infinite cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+@keyframes lineSlide {
+  0% { transform: translateX(-100%); }
+  50% { transform: translateX(0); }
+  100% { transform: translateX(100%); }
+}
+
+.hero-image-wrapper {
+  width: 100%;
+  height: 550px;
+  overflow: hidden;
+}
+
+.hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(10%); /* 少し彩度を落として洗練された印象に */
+}
+
+/* ==========================================================================
+   3. Works Section (制作実績)
+   ========================================================================== */
+.works {
+  background-color: var(--bg-secondary); /* 交互に背景を変え、視覚的な退屈を防ぐ */
+}
+
+.works-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2列のすっきりしたレイアウト */
+  gap: 60px 40px;
+}
+
+.work-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.work-link {
+  display: block;
+}
+
+.work-image-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+
+.work-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: var(--transition-smooth); /* 画像のズームアップを滑らかに */
+}
+
+.work-meta {
+  padding-left: 4px;
+}
+
+.work-category {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.work-title {
+  font-size: 1.15rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
+  color: var(--text-primary);
+  transition: var(--transition-fast);
+}
+
+.work-summary {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+/* 実績カードのホバーエフェクト（ごく僅かにズーム＆透明度変化） */
+.work-card:hover .work-image {
+  transform: scale(1.03);
+  opacity: 0.9;
+}
+
+.work-card:hover .work-title {
+  opacity: 0.7;
+}
+
+/* ==========================================================================
+   4. Strengths Section (強み・選ばれる理由)
+   ========================================================================== */
+.strengths {
+  background-color: var(--bg-primary);
+}
+
+.strengths-list {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+}
+
+.strength-item {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  align-items: flex-start;
+  border-top: 1px solid var(--border-color);
+  padding-top: 40px;
+}
+
+.strength-num {
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: var(--text-primary);
+  opacity: 0.2; /* 番号を薄くして、タイトルの視認性を邪魔しないようにする */
+  line-height: 1;
+}
+
+.strength-body {
+  max-width: 800px;
+}
+
+.strength-title {
+  font-size: 1.35rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+
+.strength-text {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.9;
+}
+
+/* ==========================================================================
+   5. Skills & Services Section
+   ========================================================================== */
+.skills {
+  background-color: var(--bg-secondary);
+}
+
+.skills-container {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.skills-block-title {
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  margin-bottom: 32px;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 16px;
+}
+
+.skills-list-items {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.skills-list-items li {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.skill-name {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.skill-desc {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+/* ツールタグのグリッド表示 */
+.tools-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.tool-tag {
+  font-size: 0.8rem;
+  font-weight: 500;
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  padding: 10px 20px;
+  letter-spacing: 0.05em;
+  transition: var(--transition-fast);
+}
+
+.tool-tag:hover {
+  background-color: var(--text-primary);
+  color: #fff;
+  border-color: var(--text-primary);
+}
+
+/* ==========================================================================
+   6. About Me Section
+   ========================================================================== */
+.about {
+  background-color: var(--bg-primary);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.about-image-wrapper {
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background-color: #f0f0f0;
+}
+
+.about-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(20%);
+}
+
+.about-content .section-title {
+  margin-bottom: 24px;
+}
+
+.about-lead {
+  font-size: 1.15rem;
+  font-weight: 500;
+  margin-bottom: 24px;
+  line-height: 1.6;
+}
+
+.about-text {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.9;
+}
+
+.about-text p {
+  margin-bottom: 20px;
+}
+
+.about-text p:last-child {
+  margin-bottom: 0;
+}
+
+/* ==========================================================================
+   7. Contact Section (問い合わせ)
+   ========================================================================== */
+.contact {
+  background-color: var(--bg-secondary);
+}
+
+.contact-form-wrapper {
+  max-width: 700px;
+  margin-top: 40px;
+}
+
+.form-group {
+  margin-bottom: 32px;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+
+/* プレースホルダーや枠線のデザインを極限までシンプルに */
+.form-input {
+  width: 100%;
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  padding: 16px 20px;
+  font-family: var(--font-base);
+  font-size: 0.95rem;
+  outline: none;
+  transition: var(--transition-fast);
+}
+
+.form-input::placeholder {
+  color: #bbb;
+  font-size: 0.9rem;
+}
+
+.form-input:focus {
+  border-color: var(--text-primary);
+}
+
+.form-textarea {
+  resize: vertical;
+}
+
+/* 送信ボタンの洗練されたホバー演出 */
+.submit-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  background-color: var(--text-primary);
+  color: #fff;
+  padding: 18px 40px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  transition: var(--transition-fast);
+}
+
+.submit-arrow {
+  transition: transform 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: #333;
+}
+
+.submit-btn:hover .submit-arrow {
+  transform: translateX(6px); /* 矢印を少し右に移動させて動きを出す */
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+.footer {
+  background-color: var(--bg-primary);
+  border-top: 1px solid var(--border-color);
+  padding: 60px 0;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-logo {
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+}
+
+.copyright {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+/* ==========================================================================
+   レスポンシブデザイン (ブレイクポイント調整)
+   ========================================================================== */
+
+/* タブレットサイズ (1023px以下) */
+@media screen and (max-width: 1023px) {
+  .section-padding {
+    padding-top: 90px;
+    padding-bottom: 90px;
+  }
+  
+  .hero-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: center;
+  }
+  
+  .hero-content {
+    order: 2; /* スマホ・タブレット時は画像を上に配置するため順序を調整 */
+  }
+  
+  .hero-image-wrapper {
+    order: 1;
+    height: 400px;
+  }
+  
+  .hero-subtitle {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .hero-title {
+    font-size: 2.5rem;
+  }
+  
+  .works-grid {
+    gap: 40px 30px;
+  }
+  
+  .skills-container {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+  
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  
+  .about-image-wrapper {
+    max-width: 500px;
+    margin: 0 auto;
+    aspect-ratio: 16 / 10;
+  }
+}
+
+/* スマートフォンサイズ (767px以下) */
+@media screen and (max-width: 767px) {
+  .section-padding {
+    padding-top: 70px;
+    padding-bottom: 70px;
+  }
+
+  /* ナビゲーションメニューの非表示とハンバーガーの有効化 */
+  .nav-desktop {
+    display: none;
+  }
+  
+  .menu-toggle {
+    display: flex;
+  }
+  
+  /* ハンバーガーボタンのアニメーション */
+  .menu-toggle.is-active .bar:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  
+  .menu-toggle.is-active .bar:nth-child(2) {
+    opacity: 0;
+  }
+  
+  .menu-toggle.is-active .bar:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+  
+  .hero-title {
+    font-size: 1.85rem;
+  }
+  
+  .hero-image-wrapper {
+    height: 300px;
+  }
+  
+  .works-grid {
+    grid-template-columns: 1fr; /* スマホでは実績を1列にする */
+    gap: 40px;
+  }
+  
+  .strength-item {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding-top: 30px;
+  }
+  
+  .strength-num {
+    font-size: 2rem;
+  }
+  
+  .footer-container {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+}

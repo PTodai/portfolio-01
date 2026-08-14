@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <!-- 検索エンジンやブラウザの表示サイズ（レスポンシブ）を設定 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DAI / WEB DESIGNER - ポートフォリオ</title>
+  
+  <!-- SEO用のディスクリプション（サイトの概要説明） -->
+  <meta name="description" content="様々な業種・ジャンルの魅力を引き出すWebデザイナー「DAI」のポートフォリオサイトです。丁寧なヒアリングと洗練された表現で、ビジネスの本質を伝えるデザインを提供します。">
+  
+  <!-- Google Fonts: 日本語用のNoto Sans JPと、英字用のMontserratを読み込み -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+  
+  <!-- スタイルシートの読み込み -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ==========================================
+       1. Header / Navigation
+       ========================================== -->
+  <header class="header" id="header">
+    <div class="header-container">
+      <!-- ロゴ部分 -->
+      <a href="#" class="logo">DAI <span class="logo-sub">/ WEB DESIGNER</span></a>
+      
+      <!-- PC用ナビゲーションメニュー -->
+      <nav class="nav-desktop">
+        <ul class="nav-list">
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#works" class="nav-link">Works</a></li>
+          <li><a href="#strengths" class="nav-link">Strengths</a></li>
+          <li><a href="#skills" class="nav-link">Skills</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+      
+      <!-- スマホ用ハンバーガーメニューの三本線ボタン -->
+      <button class="menu-toggle" id="menu-toggle" aria-label="メニューを開く">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- スマホ用ドロワー（引き出し）ナビゲーション -->
+  <nav class="nav-mobile" id="nav-mobile">
+    <ul class="nav-mobile-list">
+      <li><a href="#about" class="nav-mobile-link">About</a></li>
+      <li><a href="#works" class="nav-mobile-link">Works</a></li>
+      <li><a href="#strengths" class="nav-mobile-link">Strengths</a></li>
+      <li><a href="#skills" class="nav-mobile-link">Skills</a></li>
+      <li><a href="#contact" class="nav-mobile-link">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <!-- ==========================================
+         2. Hero Section (ファーストビュー)
+         ========================================== -->
+    <section class="hero fade-in" id="hero">
+      <div class="hero-container">
+        <div class="hero-content">
+          <h1 class="hero-title">想いを整理し、<br>本質を伝えるWebデザイン</h1>
+          <p class="hero-subtitle">丁寧なヒアリングと洗練された表現で、ビジネスの魅力を最大限に引き出します。</p>
+          <div class="hero-scroll">
+            <a href="#works" class="scroll-indicator">
+              <span class="scroll-text">View Works</span>
+              <span class="scroll-line"></span>
+            </a>
+          </div>
+        </div>
+        <div class="hero-image-wrapper">
+          <!-- 洗練されたミニマルな空間（Unsplash） -->
+          <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80" alt="ミニマルで美しい空間" class="hero-image">
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         3. Works Section (制作実績)
+         ========================================== -->
+    <section class="works section-padding fade-in" id="works">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-subtitle">PORTFOLIO</span>
+          <h2 class="section-title">Works</h2>
+          <p class="section-desc">様々な業種・ジャンルのブランドらしさを引き出すWebデザインの実績です。</p>
+        </div>
+        
+        <!-- 実績グリッドレイアウト -->
+        <div class="works-grid">
+          
+          <!-- 01. 美容サロン -->
+          <article class="work-card">
+            <a href="https://hairsalon-riche-hp.vercel.app/" target="_blank" rel="noopener noreferrer" class="work-link">
+              <div class="work-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80" alt="美容サロン WEBサイト" class="work-image">
+              </div>
+              <div class="work-meta">
+                <span class="work-category">Beauty / Spa</span>
+                <h3 class="work-title">美容サロン Riche WEBサイト</h3>
+                <p class="work-summary">上質でリラックスできる空間を表現した、ビューティースパのコーポレートサイト。</p>
+              </div>
+            </a>
+          </article>
+
+          <!-- 02. カフェ -->
+          <article class="work-card">
+            <a href="https://cafe-lumiere-lp.vercel.app/" target="_blank" rel="noopener noreferrer" class="work-link">
+              <div class="work-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=800&q=80" alt="カフェ LP" class="work-image">
+              </div>
+              <div class="work-meta">
+                <span class="work-category">Cafe / Food</span>
+                <h3 class="work-title">Cafe Lumiere ランディングページ</h3>
+                <p class="work-summary">落ち着いた木目調とコーヒーの薫りを感じさせる、カフェ紹介用のランディングページ。</p>
+              </div>
+            </a>
+          </article>
+
+          <!-- 03. パーソナルトレーニング施設 -->
+          <article class="work-card">
+            <a href="https://persoaltraininggym-bestbodyproduce.vercel.app/" target="_blank" rel="noopener noreferrer" class="work-link">
+              <div class="work-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=800&q=80" alt="パーソナルトレーニング施設 LP" class="work-image">
+              </div>
+              <div class="work-meta">
+                <span class="work-category">Fitness / Wellness</span>
+                <h3 class="work-title">Best Body Produce LP</h3>
+                <p class="work-summary">洗練された健康美と確かな実績をスタイリッシュに訴求するジムのLP。</p>
+              </div>
+            </a>
+          </article>
+
+          <!-- 04. IT企業 -->
+          <article class="work-card">
+            <a href="https://it-nextbridge-corporate-q2ql.vercel.app/" target="_blank" rel="noopener noreferrer" class="work-link">
+              <div class="work-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=800&q=80" alt="IT企業 コーポレートサイト" class="work-image">
+              </div>
+              <div class="work-meta">
+                <span class="work-category">IT / Corporate</span>
+                <h3 class="work-title">Next Bridge コーポレートサイト</h3>
+                <p class="work-summary">テクノロジーがもたらすスマートな未来と信頼感をクリーンに表現したサイト。</p>
+              </div>
+            </a>
+          </article>
+
+          <!-- 05. イタリアンレストラン -->
+          <article class="work-card">
+            <a href="https://trattoria-sole-website-git-main-nwa-dai.vercel.app/" target="_blank" rel="noopener noreferrer" class="work-link">
+              <div class="work-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800&q=80" alt="イタリアンレストラン WEBサイト" class="work-image">
+              </div>
+              <div class="work-meta">
+                <span class="work-category">Restaurant / Food</span>
+                <h3 class="work-title">Trattoria Sole 公式サイト</h3>
+                <p class="work-summary">伝統的な味わいと明るい陽気な空気感を伝える、カジュアルな本格イタリアンの店舗サイト。</p>
+              </div>
+            </a>
+          </article>
+
+          <!-- 06. アパレルEC風サイト -->
+          <article class="work-card">
+            <a href="https://apparel-urbancloset-ecsite-git-main-nwa-dai.vercel.app/" target="_blank" rel="noopener noreferrer" class="work-link">
+              <div class="work-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=800&q=80" alt="アパレルEC風サイト" class="work-image">
+              </div>
+              <div class="work-meta">
+                <span class="work-category">Fashion / E-Commerce</span>
+                <h3 class="work-title">Urban Closet ブランドサイト</h3>
+                <p class="work-summary">余白を活かしたミニマルな構図で、プロダクトの質感を際立たせたアパレルブランドのEC風サイト。</p>
+              </div>
+            </a>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         4. Strengths Section (強み・理由)
+         ========================================== -->
+    <section class="strengths section-padding fade-in" id="strengths">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-subtitle">WHY DAI</span>
+          <h2 class="section-title">Strengths</h2>
+          <p class="section-desc">ビジネスの成長に貢献するために、大切にしている3つの強みです。</p>
+        </div>
+
+        <div class="strengths-list">
+          <!-- 01 / デザイン表現力 -->
+          <div class="strength-item">
+            <div class="strength-num">01</div>
+            <div class="strength-body">
+              <h3 class="strength-title">多彩なジャンルに応えるデザイン表現力</h3>
+              <p class="strength-text">飲食・美容・IT・アパレルなど、ブランドの世界観やターゲットに合わせた最適なトーン＆マナー（※デザインの一貫性や雰囲気の調整）を追求し、あらゆるビジネスの魅力を最も輝く形でビジュアル化します。</p>
+            </div>
+          </div>
+
+          <!-- 02 / ヒアリング力 -->
+          <div class="strength-item">
+            <div class="strength-num">02</div>
+            <div class="strength-body">
+              <h3 class="strength-title">課題の本質を捉えるヒアリング力</h3>
+              <p class="strength-text">普段から人々の目的に伴走してきた経験を活かし、対話を通してクライアント自身も気づいていない潜在的な強みやターゲットユーザーの課題を丁寧に引き出し、設計に落とし込みます。</p>
+            </div>
+          </div>
+
+          <!-- 03 / ヘルスケア領域 -->
+          <div class="strength-item">
+            <div class="strength-num">03</div>
+            <div class="strength-body">
+              <h3 class="strength-title">ヘルスケア・ウェルネス領域の深い視点</h3>
+              <p class="strength-text">身体作りや健康に関する専門知識・コンテキスト（文脈）への理解が深く、フィットネスジムやウェルネスブランドの企画・デザインにおいては、専門用語や利用者の心理に寄り添ったスムーズな進行が可能です。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         5. Skills & Services Section
+         ========================================== -->
+    <section class="skills section-padding fade-in" id="skills">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-subtitle">SERVICES</span>
+          <h2 class="section-title">Skills & Services</h2>
+          <p class="section-desc">ご提供可能なサービスと、制作に使用するテクノロジー・ツールです。</p>
+        </div>
+
+        <div class="skills-container">
+          <!-- 提供サービス -->
+          <div class="skills-block">
+            <h3 class="skills-block-title">Services</h3>
+            <ul class="skills-list-items">
+              <li>
+                <span class="skill-name">Webサイト制作</span>
+                <span class="skill-desc">コーポレートサイト、店舗サイト、ブランドサイトの構築</span>
+              </li>
+              <li>
+                <span class="skill-name">LP（ランディングページ）制作</span>
+                <span class="skill-desc">目的への誘導を最大化する、訴求力の高い1ページ設計</span>
+              </li>
+              <li>
+                <span class="skill-name">UI / UXデザイン</span>
+                <span class="skill-desc">使いやすさと心地よいユーザー体験を両立した画面設計</span>
+              </li>
+              <li>
+                <span class="skill-name">コーディング</span>
+                <span class="skill-desc">HTML5 / CSS3 / Vanilla JS による美しく軽量な実装</span>
+              </li>
+              <li>
+                <span class="skill-name">レスポンシブ対応</span>
+                <span class="skill-desc">スマートフォン、タブレット、PCのすべての画面サイズへの最適化</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- 使用ツール -->
+          <div class="skills-block">
+            <h3 class="skills-block-title">Tools & Languages</h3>
+            <div class="tools-grid">
+              <div class="tool-tag">Figma</div>
+              <div class="tool-tag">Illustrator</div>
+              <div class="tool-tag">Photoshop</div>
+              <div class="tool-tag">HTML5</div>
+              <div class="tool-tag">CSS3</div>
+              <div class="tool-tag">JavaScript</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         6. About Me Section
+         ========================================== -->
+    <section class="about section-padding fade-in" id="about">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-image-wrapper">
+            <!-- 落ち着いたデザインの作業空間をイメージ -->
+            <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=800&q=80" alt="DAI" class="about-image">
+          </div>
+          <div class="about-content">
+            <span class="section-subtitle">ABOUT ME</span>
+            <h2 class="section-title">DAI</h2>
+            <p class="about-lead">想いに寄り添い、本質的な課題をデザインで解決する</p>
+            <div class="about-text">
+              <p>
+                ご覧いただきありがとうございます。WebデザイナーのDAIです。
+                私は、クライアントの皆様が持つ「内に秘めた想い」や「届けたい価値」を整理し、ユーザーにまっすぐ伝わるWebデザインを制作しています。
+              </p>
+              <p>
+                私の大きな強みの一つは、長年トレーナーとして培った「一人ひとりの課題に深く寄り添うヒアリング力と提案力」です。目標に向かって一対一で並走し、本音や隠れたニーズを引き出す対話を、Web制作においても徹底しています。
+              </p>
+              <p>
+                カフェ、美容サロン、IT、アパレルなど多種多様なジャンルにおいて、それぞれが持つブランドらしさを最大化させるだけでなく、ヘルスケア・ウェルネス分野における専門的なアプローチも得意としています。デザインを通して、あなたのビジネスが持つ本来の可能性を引き出します。
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         7. Contact Section (問い合わせ)
+         ========================================== -->
+    <section class="contact section-padding fade-in" id="contact">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-subtitle">INQUIRY</span>
+          <h2 class="section-title">Contact</h2>
+          <p class="section-desc">お仕事のご依頼、ご相談など、お気軽にお問い合わせください。</p>
+        </div>
+
+        <!-- 問い合わせフォーム -->
+        <div class="contact-form-wrapper">
+          <form class="contact-form" action="#" method="POST">
+            <div class="form-group">
+              <label for="name" class="form-label">Name <span class="required">必須</span></label>
+              <input type="text" id="name" name="name" class="form-input" placeholder="お名前" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="email" class="form-label">Email <span class="required">必須</span></label>
+              <input type="email" id="email" name="email" class="form-input" placeholder="メールアドレス" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="message" class="form-label">Message <span class="required">必須</span></label>
+              <textarea id="message" name="message" class="form-input form-textarea" placeholder="ご相談内容をご記入ください" rows="6" required></textarea>
+            </div>
+
+            <div class="form-submit">
+              <button type="submit" class="submit-btn">
+                <span>Send Message</span>
+                <svg class="submit-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 8H15M15 8L8 1M15 8L8 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==========================================
+       Footer
+       ========================================== -->
+  <footer class="footer">
+    <div class="container footer-container">
+      <p class="footer-logo">DAI / WEB DESIGNER</p>
+      <p class="copyright">&copy; 2026 DAI. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <!-- スクリプトの読み込み -->
+  <script src="script.js"></script>
+</body>
+</html>
