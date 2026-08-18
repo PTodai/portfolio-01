@@ -1,0 +1,94 @@
+あなた（AI）は、最高峰のUI/UXデザイナー兼フロントエンドエンジニアです。
+以下の要件・構成案・スタイルガイドに従い、WebデザイナーのポートフォリオLPサイトを構築してください。
+
+---
+
+### 【作成するファイル構成】
+1. `index.html` - セマンティックなHTML5構造、SEO配慮、Unsplash画像使用
+2. `style.css` - モダンCSS（CSS Variables, Flexbox, CSS Grid, レスポンシブ対応）
+3. `script.js` - スムーススクロール、モバイルハンバーガーメニュー、スクロールアニメーション
+
+---
+
+### 【コンセプト・ポジショニングの注意点（最重要）】
+- 特定の業界専門に見えすぎないよう、「様々な業種・ジャンルの魅力を引き出すWebデザイナー」を第一印象とします。
+- スポーツ・フィットネス・ウェルネス分野は「特に業界理解が深い強みのひとつ」としてフラットに紹介し、カフェ、サロン、IT、ECなど他業種のクライアントも安心して相談できるバランス感にしてください。
+
+---
+
+### 【デザインポリシー・世界観】
+- **雰囲気**: 余白（Margin/Padding）を贅沢に活かした、ミニマル・洗練・上質なデザイン。
+- **配色方針**:
+- 背景色 (`--bg-color`): #FFFFFF（純白）および #F8F9FA（ごく薄い上質なグレー）
+- メイン文字色 (`--text-primary`): #111111（ダークグレー・墨色）
+- サブ文字色 (`--text-secondary`): #666666
+- 枠線色 (`--border-color`): #EAEAEA
+- **タイポグラフィ**:
+- 日本語: 'Helvetica Neue', 'Noto Sans JP', sans-serif（行間 `line-height: 1.8` を十分確保）
+- **絶対回避ルール（BANNED）**:
+- ❌ ごちゃごちゃした装飾、過度なグラデーション、派手なドロップシャドウ
+- ❌ カラフルな配色（原色やネオンカラーは完全NG）
+- ❌ 安っぽいLPテンプレート感（フォントの余白と文字間隔を洗練させる）
+
+---
+
+### 【レスポンシブ対応要件】
+- PC（1024px〜）、タブレット（768px〜1023px）、スマホ（〜767px）完全対応。
+- スマホ表示時はヘッダーナビゲーションをスムーズなハンバーガーメニューに切り替えること。
+
+---
+
+### 【掲載コンテンツ構造（index.html）】
+
+1. **Header / Navigation**
+- ロゴ名: `DAI / WEB DESIGNER`
+- メニュー: About / Works / Strengths / Skills / Contact
+
+2. **Hero Section (FV)**
+- キャッチコピー: 「想いを整理し、本質を伝えるWebデザイン」
+- サブコピー: 「丁寧なヒアリングと洗練された表現で、ビジネスの魅力を最大限に引き出します。」
+- ビジュアル: ミニマルで美しく静かな空間・デザインを感じさせるUnsplash画像（例: 抽象的な建築やミニマルなインテリア等 `https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80`）
+
+3. **Works Section (制作実績ギャラリー)**
+※さまざまな業種に対応できる柔軟性をアピールするため、HEROのすぐ下に配置します。
+- 2列〜3列のきれいなグリッドレイアウト。画像ホバー時にかすかに透明度が変わる上品なエフェクト。
+- 各実績には「カテゴリー（例: Cafe / Salon / Fitness / IT）」、「タイトル」、「概要」を掲載。
+- 各サイトのHERO画面を画像として割り当てること。
+- 01. 美容サロン WEBサイト（ビューティー・スパ）
+   https://hairsalon-riche-hp.vercel.app/
+- 02. カフェ LP（コーヒー・インテリア）
+   https://cafe-blossom-lp-ac6i.vercel.app/
+   https://cafe-lumiere-lp.vercel.app/
+- 03. パーソナルトレーニング施設 LP（フィットネス・ウェルネス）
+   https://persoaltraininggym-bestbodyproduce.vercel.app/
+- 04. IT企業 コーポレートサイト（オフィス・テクノロジー）
+   https://it-nextbridge-corporate-q2ql.vercel.app/
+- 05. イタリアンレストラン WEBサイト（フード・レストラン）
+   https://trattoria-sole-website-git-main-nwa-dai.vercel.app/
+- 06. アパレルEC風サイト（ファッション・ミニマル）
+   https://apparel-urbancloset-ecsite-git-main-nwa-dai.vercel.app/
+
+4. **Strengths Section (選ばれる理由・強み)**
+1. 01 / 多彩なジャンルに応えるデザイン表現力
+- 飲食・美容・IT・アパレルなど、ブランドの世界観やターゲットに合わせた最適なトーン＆マナーを追求します。
+2. 02 / 課題の本質を捉えるヒアリング力
+- 普段から人々の目的に伴走してきた経験を活かし、会話を通して潜在的な課題やクライアントの強みを丁寧に引き出します。
+3. 03 / ヘルスケア・ウェルネス領域の深い視点
+- 体作りや健康に関する専門的コンテキストの理解が深く、スポーツ・フィットネス分野の企画や制作にもスムーズに対応可能です。
+
+5. **Skills & Services Section**
+- 対応業務: Webサイト制作、LP制作、UI/UXデザイン、HTML/CSS/JSコーディング、レスポンシブ対応
+- 使用ツール: Figma, Illustrator, Photoshop, HTML5, CSS3, JavaScript
+
+6. **About Me Section**
+- Webデザイナーとしての姿勢に加え、「トレーナーとして培った『一人ひとりの課題に寄り添うヒアリング力と提案力』をWeb制作にも活かしている」旨をナチュラルに記載。
+
+7. **Contact Section / Footer**
+- 洗練されたシンプルな問い合わせフォーム（名前、メールアドレス、ご相談内容）およびコピーライト。
+
+---
+
+### 【実装コードの質に関する要求】
+- CSSは変数（`:root`）を活用し、保守性を高くしてください。
+- JavaScriptは Vanilla JS で記述し、スクロール時のフェードイン表示（`IntersectionObserver`）を実装してください。
+- 各ファイル（`index.html`, `style.css`, `script.js`）をコードブロックで出力し、すぐに実行できるようにしてください。
