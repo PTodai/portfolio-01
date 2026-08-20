@@ -326,7 +326,27 @@
 
         <!-- 問い合わせフォーム -->
         <div class="contact-form-wrapper">
-          <form class="contact-form" action="#" method="POST">
+          <!-- 
+            メール送信に外部API（Web3Forms）を利用する設定：
+            Web3Forms（https://web3forms.com/）を利用することで、メールソフトを立ち上げずに、
+            このページ上でメール送信を完結させることができます。
+            
+            【重要】
+            1. https://web3forms.com/ にアクセスし、ご自身のメールアドレス（dotsuka1128@gmail.com）を入力して、
+               無料の「Access Key（アクセスキー）」を発行・取得してください（数秒でメールで届きます）。
+            2. 下記の value="YOUR_ACCESS_KEY_HERE" の部分に、取得したキーを貼り付けてください。
+          -->
+          <form class="contact-form" action="https://api.web3forms.com/submit" method="POST" id="contact-form">
+            <!-- 取得したアクセスキーをここに貼り付けます -->
+            <input type="hidden" name="access_key" value="06d1c29a-a507-4719-bd34-8232b3f7469d">
+            
+            <!-- 送信元の表示名や件名を設定（日本語対応） -->
+            <input type="hidden" name="from_name" value="ポートフォリオサイト">
+            <input type="hidden" name="subject" value="ポートフォリオサイトから新しいお問い合わせがあります">
+            
+            <!-- スパム送信対策（botによる自動送信を防ぐダミーの入力欄） -->
+            <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
             <div class="form-group">
               <label for="name" class="form-label">Name <span class="required">必須</span></label>
               <input type="text" id="name" name="name" class="form-input" placeholder="お名前" required>

@@ -134,4 +134,76 @@ document.addEventListener('DOMContentLoaded', () => {
     fadeObserver.observe(element);
   });
 
+
+  // ==========================================
+  // 5. お問い合わせフォームの送信処理 (Web3Forms APIによる非同期通信)
+  // ==========================================
+  // ※非同期通信（Ajax/Fetch API）とは：
+  // ページをリロード（再読み込み）することなく、裏側でサーバーとデータをやり取りする技術です。
+  // 送信ボタンを押した後に画面が白くならず、スムーズに「送信完了」のメッセージを表示できます。
+  
+  const contactForm = document.getElementById('contact-form');
+  const submitBtn = contactForm ? contactForm.querySelector('.submit-btn') : null;
+  const submitBtnText = submitBtn ? submitBtn.querySelector('span') : null;
+
+  if (contactForm && submitBtn && submitBtnText) {
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault(); // 通常のブラウザのフォーム送信（ページ遷移）を防止します
+
+      // アクセス用のキーが初期値（プレースホルダー）のままになっていないか確認します
+      const accessKeyInput = contactForm.querySelector('input[name="access_key"]');
+      if (accessKeyInput && (accessKeyInput.value === 'YOUR_ACCESS_KEY_HERE' || accessKeyInput.value === '')) {
+        alert('メール送信を有効にするには、HTML内の「YOUR_ACCESS_KEY_HERE」を取得したアクセスキーに書き換える必要があります。');
+        return;
+      }
+
+      // 送信中であることが伝わるよう、ボタンをクリック不可にしテキストを変更します
+      submitBtn.disabled = true;
+      const originalText = submitBtnText.textContent;
+      submitBtnText.textContent = 'Sending... (送信中)';
+
+      // フォームに入力されたデータを収集します
+      const formData = new FormData(contactForm);
+      const object = Object.fromEntries(formData);
+      const json = JSON.stringify(object);
+
+      // Web3FormsのAPIサーバーに対してデータを送信（Fetch）します
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: json
+      })
+      .then(async (response) => {
+        let jsonResponse = await response.json();
+        if (response.status == 200) {
+          // 送信成功時：ボタンの文言を変えてユーザーに通知し、入力をクリアします
+          submitBtnText.textContent = 'Sent Successfully! (送信完了)';
+          alert('お問い合わせ内容を送信しました。指定のメールアドレスに届きます。');
+          contactForm.reset(); // 入力フォームを空に戻します
+        } else {
+          // サーバー側でエラーが返ってきた場合
+          console.log(response);
+          submitBtnText.textContent = 'Error (送信失敗)';
+          alert('送信に失敗しました: ' + jsonResponse.message);
+        }
+      })
+      .catch(error => {
+        // ネットワークが切断されているなどのエラー時
+        console.log(error);
+        submitBtnText.textContent = 'Network Error';
+        alert('ネットワーク接続エラーが発生しました。接続を確認してください。');
+      })
+      .then(() => {
+        // 送信処理（成功・失敗問わず）が完了したら、3秒後にボタンの状態を元に戻します
+        setTimeout(() => {
+          submitBtn.disabled = false;
+          submitBtnText.textContent = originalText;
+        }, 3000);
+      });
+    });
+  }
+
 });
